@@ -1,0 +1,242 @@
+name: ImmortalWrt-25.12
+
+on:
+  schedule:
+  - cron: '0 18 * * 5' # 每周五北京时间凌晨2点（UTC+8）运行
+  watch:
+    types: [ started ]
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      CACHE_BUILD:
+        description: '缓存加速'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      UPLOAD_FIRMWARE:
+        description: '是否上传固件'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      UPLOAD_BUILDINFO:
+        description: '是否上传配置文件'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      UPLOAD_PACKAGE:
+        description: '是否上传插件'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      UPLOAD_RELEASE:
+        description: '是否发布到 Releases'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+env:
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_BRANCH: 25.12
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: config/config_25_12.seed
+  Firmware_Name: immortalwrt-25.12
+  DIY_P1_SH: smpackage/immortalwrt-all-1.sh
+  DIY_P2_SH: smpackage/immortalwrt-all-2.sh
+  BUILD_VERSION: 25.12
+  UPLOAD_FIRMWARE: ${{ github.event.inputs.UPLOAD_FIRMWARE || true }}
+  UPLOAD_BUILDINFO: ${{ github.event.inputs.UPLOAD_BUILDINFO || true }}
+  UPLOAD_PACKAGE: ${{ github.event.inputs.UPLOAD_PACKAGE || true }}
+  UPLOAD_RELEASE: ${{ github.event.inputs.UPLOAD_RELEASE || true }}
+  CACHE_BUILD: ${{ github.event.inputs.CACHE_BUILD || true }}
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    name: Build ImmortalWrt-25.12
+    permissions:
+      contents: write
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Detect Branch
+      run: |
+        export Current_Branch=$(git rev-parse --abbrev-ref HEAD)
+        echo "Current_Branch=$Current_Branch" >> $GITHUB_ENV
+        echo "Current git branch is $Current_Branch"
+
+    - name: Initialization environment
+      run: |
+        echo "Build_Date=$(date +%Y%m%d_%H%M%S)" >> "$GITHUB_ENV"
+        echo "Build_Version=${{ env.BUILD_VERSION }}" >> "$GITHUB_ENV"
+        env
+        df -hT
+
+    - name: Setting up compilation environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential clang libssl-dev libncurses5-dev \
+          libncursesw5-dev zlib1g-dev gawk git gettext wget python3 python3-pip \
+          libelf-dev libaudit-dev pkgconf libgnutls28-dev device-tree-compiler \
+          libudev-dev uuid-dev patchutils ccache
+        
+        mkdir -p /opt/buildcache
+        echo "CCACHE_DIR=/opt/buildcache" >> $GITHUB_ENV
+
+    - name: Clone ImmortalWrt source code
+      run: |
+        git clone ${{ env.REPO_URL }} --branch=${{ env.REPO_BRANCH }} --single-branch openwrt
+        ln -sf /workspace/openwrt $GITHUB_WORKSPACE/openwrt
+
+    - name: Save build configuration for rollback
+      run: |
+        cd openwrt
+        echo "CurrentCommitHash=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+    - name: Update & Install feeds
+      working-directory: ./openwrt
+      run: |
+        chmod +x $GITHUB_WORKSPACE/${{ env.DIY_P1_SH }}
+        $GITHUB_WORKSPACE/${{ env.DIY_P1_SH }}
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+
+    - name: Load custom configuration
+      working-directory: ./openwrt
+      run: |
+        if [ -f "$GITHUB_WORKSPACE/${{ env.CONFIG_FILE }}" ]; then
+          cp $GITHUB_WORKSPACE/${{ env.CONFIG_FILE }} .config
+        else
+          echo "Configuration file not found!"
+        fi
+        
+        chmod +x $GITHUB_WORKSPACE/${{ env.DIY_P2_SH }}
+        $GITHUB_WORKSPACE/${{ env.DIY_P2_SH }}
+        
+        make defconfig
+
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@main
+      if: (github.event.inputs.ssh == 'true' && github.event.name == 'workflow_dispatch') || contains(github.event.head_commit.message, '[ssh]')
+
+    - name: Download package
+      working-directory: ./openwrt
+      run: |
+        make download -j$(nproc)
+        find dl -size +150k -exec ls -lh {} \;
+
+    - name: Compile the firmware
+      working-directory: ./openwrt
+      run: |
+        echo "Build started at $(date)"
+        if [ "${{ env.CACHE_BUILD }}" == "true" ]; then
+          echo "Using CCACHE for faster builds"
+          make -j$(nproc) V=s CC_CCACHE=y 2>&1 | tee ../build.log
+        else
+          make -j$(nproc) V=s 2>&1 | tee ../build.log
+        fi
+        echo "Build completed at $(date)"
+
+    - name: Check space usage
+      run: df -hT
+
+    - name: Organize files
+      id: organize
+      working-directory: ./openwrt
+      if: always()
+      run: |
+        cd bin/targets/*/*
+        ls -lhA
+        
+        # Create output directories
+        mkdir -p $GITHUB_WORKSPACE/output
+        mkdir -p $GITHUB_WORKSPACE/output/packages
+        
+        # Copy firmware files
+        cp -rf ./* $GITHUB_WORKSPACE/output/ 2>/dev/null || true
+        
+        # Create BUILDINFO summary
+        cat > $GITHUB_WORKSPACE/output/BUILDINFO.txt << EOF
+        ImmortalWrt 25.12 Build Information
+        ====================================
+        Build Version: ${{ env.BUILD_VERSION }}
+        Build Date: ${{ env.Build_Date }}
+        Build Branch: ${{ env.Current_Branch }}
+        Commit: ${{ env.CurrentCommitHash }}
+        Build Host: $(hostname)
+        System: $(uname -a)
+        
+        Configuration: ${{ env.CONFIG_FILE }}
+        EOF
+        
+        ls -la $GITHUB_WORKSPACE/output/
+
+    - name: Upload firmware to release
+      uses: softprops/action-gh-release@master
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        tag_name: ImmortalWrt-25.12-${{ env.Build_Date }}
+        files: ${{ github.workspace }}/output/**/*
+        generate_release_notes: true
+
+    - name: Upload buildinfo
+      uses: actions/upload-artifact@main
+      if: env.UPLOAD_BUILDINFO == 'true' && !cancelled()
+      with:
+        name: ImmortalWrt-25.12-buildinfo
+        path: |
+          ${{ github.workspace }}/output/BUILDINFO.txt
+          ${{ github.workspace }}/build.log
+
+    - name: Upload firmware
+      uses: actions/upload-artifact@main
+      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+      with:
+        name: ImmortalWrt-25.12-firmware-${{ env.Build_Date }}
+        path: ${{ github.workspace }}/output/
+
+    - name: Clean up runner storage
+      if: always()
+      run: |
+        echo "Cleaning up runner storage..."
+        rm -rf /opt/buildcache/*
+        df -hT
+
+  notification:
+    needs: build
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Send build status notification
+      run: |
+        if [ "${{ needs.build.result }}" == "success" ]; then
+          echo "✅ ImmortalWrt 25.12 build completed successfully!"
+        else
+          echo "❌ ImmortalWrt 25.12 build failed."
+        fi

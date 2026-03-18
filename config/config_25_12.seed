@@ -1,0 +1,213 @@
+# 
+# ImmortalWrt 25.12 编译配置
+# 版本: 2026-03-18
+# 此配置为25.12版本的推荐配置
+#
+
+CONFIG_MODULES=y
+CONFIG_HAVE_DOT_CONFIG=y
+CONFIG_HOST_OS_LINUX=y
+
+#
+# 25.12 版本特定配置
+#
+CONFIG_TARGET_x86=y
+CONFIG_TARGET_x86_64=y
+CONFIG_TARGET_x86_64_Generic=y
+
+#
+# 编译选项
+#
+CONFIG_CCACHE=y
+CONFIG_CCACHE_DIR=""
+
+#
+# 基础系统
+#
+CONFIG_PACKAGE_libc=y
+CONFIG_PACKAGE_libgcc=y
+CONFIG_PACKAGE_libuci=y
+CONFIG_PACKAGE_libubus=y
+CONFIG_PACKAGE_uci=y
+CONFIG_PACKAGE_urandom-seed=y
+CONFIG_PACKAGE_ubase=y
+CONFIG_PACKAGE_protobuf=y
+
+#
+# 网络功能
+#
+CONFIG_PACKAGE_kmod-bnx2=y
+CONFIG_PACKAGE_kmod-bnx2x=y
+CONFIG_PACKAGE_kmod-ixgbe=y
+CONFIG_PACKAGE_kmod-ige-wan=y
+CONFIG_PACKAGE_kmod-igc=y
+
+#
+# LuCI Web 界面
+#
+CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-base=y
+CONFIG_PACKAGE_luci-lib-base=y
+CONFIG_PACKAGE_luci-lib-ip=y
+CONFIG_PACKAGE_luci-lib-jsonc=y
+CONFIG_PACKAGE_luci-lib-nixio=y
+CONFIG_PACKAGE_luci-mod-admin-full=y
+CONFIG_PACKAGE_luci-mod-network=y
+CONFIG_PACKAGE_luci-mod-system=y
+CONFIG_PACKAGE_luci-mod-status=y
+
+#
+# LuCI 中文支持
+#
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-network-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-opkg-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-system-zh-cn=y
+
+#
+# LuCI 主题
+#
+CONFIG_PACKAGE_luci-theme-bootstrap=y
+CONFIG_PACKAGE_luci-theme-argon=y
+
+#
+# LuCI 应用
+#
+CONFIG_PACKAGE_luci-app-firewall=y
+CONFIG_PACKAGE_luci-app-opkg=y
+CONFIG_PACKAGE_luci-app-statistics=y
+CONFIG_PACKAGE_luci-app-uhttpd=y
+
+#
+# 网络工具
+#
+CONFIG_PACKAGE_ipv6helper=y
+CONFIG_PACKAGE_ppp=y
+CONFIG_PACKAGE_ppp-mod-pppoe=y
+CONFIG_PACKAGE_firewall=y
+CONFIG_PACKAGE_firewall4=y
+CONFIG_PACKAGE_nftables=y
+
+#
+# 管理工具
+#
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_wget-ssl=y
+CONFIG_PACKAGE_openssh-client=y
+CONFIG_PACKAGE_openssh-server=y
+CONFIG_PACKAGE_openssh-sftp-server=y
+
+#
+# 文件系统和存储
+#
+CONFIG_PACKAGE_e2fsprogs=y
+CONFIG_PACKAGE_ntfs-3g=y
+CONFIG_PACKAGE_exfat=y
+CONFIG_PACKAGE_block-mount=y
+
+#
+# 高级功能 - PassWall2（翻墙工具）
+#
+CONFIG_PACKAGE_passwall2-core=y
+CONFIG_PACKAGE_passwall2-tools=y
+
+#
+# 高级功能 - OpenClash
+#
+CONFIG_PACKAGE_openclash=y
+
+#
+# 高级功能 - AdGuardHome
+#
+CONFIG_PACKAGE_adguardhome=y
+CONFIG_PACKAGE_luci-app-adguardhome=y
+CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y
+
+#
+# 高级功能 - iStore 应用商店
+#
+CONFIG_PACKAGE_istore=y
+
+#
+# DNS 服务
+#
+CONFIG_PACKAGE_dnsmasq-full=y
+CONFIG_PACKAGE_dnsmasq_full_dhcp=y
+CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
+CONFIG_PACKAGE_dnsmasq_full_dnssec=y
+CONFIG_PACKAGE_dnsmasq_full_auth=y
+
+#
+# 系统实用工具
+#
+CONFIG_PACKAGE_bash=y
+CONFIG_PACKAGE_coreutils-full=y
+CONFIG_PACKAGE_diffutils=y
+CONFIG_PACKAGE_findutils=y
+CONFIG_PACKAGE_grep=y
+CONFIG_PACKAGE_gzip=y
+CONFIG_PACKAGE_nano=y
+CONFIG_PACKAGE_tar=y
+CONFIG_PACKAGE_unzip=y
+CONFIG_PACKAGE_zip=y
+
+#
+# 监控和性能
+#
+CONFIG_PACKAGE_collectd=y
+CONFIG_PACKAGE_collectd-mod-cpu=y
+CONFIG_PACKAGE_collectd-mod-interface=y
+CONFIG_PACKAGE_collectd-mod-iwinfo=y
+CONFIG_PACKAGE_collectd-mod-load=y
+CONFIG_PACKAGE_collectd-mod-memory=y
+CONFIG_PACKAGE_collectd-mod-rrdtool=y
+CONFIG_PACKAGE_rrdtool=y
+
+#
+# 启用 IPv6 支持
+#
+CONFIG_PACKAGE_ipv6helper=y
+CONFIG_PACKAGE_odhcp6c=y
+CONFIG_PACKAGE_odhcpd-ipv6only=y
+
+#
+# 取消注释以下选项来禁用某些功能
+#
+# CONFIG_PACKAGE_kmod-nf_nat_redirect is not set
+# CONFIG_PACKAGE_nf_nat_redirect is not set
+
+#
+# 调试选项
+#
+# CONFIG_DEBUG is not set
+# CONFIG_STRIP_BINARIES is not set (保留符号以便调试)
+
+# 
+# 优化选项
+#
+CONFIG_OPTIMIZE_FOR_CPU=y
+CONFIG_OPTIMIZE_FOR_FLASH=y
+
+#
+# 自定义设置
+#
+CONFIG_DEFAULT_TARGET_OPTIMIZATION="-O2 -march=x86-64 -mtune=generic"
+
+#
+# Lua脚本支持
+#
+CONFIG_PACKAGE_lua=y
+CONFIG_PACKAGE_liblua=y
+CONFIG_PACKAGE_luci-lib-ltn12=y
+CONFIG_PACKAGE_luci-lib-luanet=y
+CONFIG_PACKAGE_luci-lib-luasql=y
+
+#
+# 版本标记
+#
+CONFIG_VERSION_DIST="ImmortalWrt"
+CONFIG_VERSION_NICK="25.12"
+CONFIG_VERSION_NUMBER="25.12"
+CONFIG_VERSION_CODE="25.12"
+CONFIG_VERSION_BUILDDATE="$(date -u '+%Y-%m-%d')"
