@@ -14,48 +14,48 @@ on:
         default: 'false'
         type: choice
         options:
-          - 'false'
-          - 'true'
+        - 'false'
+        - 'true'
       CACHE_BUILD:
         description: '缓存加速'
         required: true
         default: 'true'
         type: choice
         options:
-          - 'true'
-          - 'false'
+        - 'true'
+        - 'false'
       UPLOAD_FIRMWARE:
         description: '是否上传固件'
         required: true
         default: 'true'
         type: choice
         options:
-          - 'true'
-          - 'false'
+        - 'true'
+        - 'false'
       UPLOAD_BUILDINFO:
         description: '是否上传配置文件'
         required: true
         default: 'true'
         type: choice
         options:
-          - 'true'
-          - 'false'
+        - 'true'
+        - 'false'
       UPLOAD_PACKAGE:
         description: '是否上传插件'
         required: true
         default: 'true'
         type: choice
         options:
-          - 'true'
-          - 'false'
+        - 'true'
+        - 'false'
       UPLOAD_RELEASE:
         description: '是否发布到 Releases'
         required: true
         default: 'true'
         type: choice
         options:
-          - 'true'
-          - 'false'
+        - 'true'
+        - 'false'
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
@@ -79,7 +79,7 @@ jobs:
     name: Build ImmortalWrt-25.12
     permissions:
       contents: write
-      
+
     steps:
     - name: Checkout
       uses: actions/checkout@main
@@ -104,7 +104,7 @@ jobs:
           libncursesw5-dev zlib1g-dev gawk git gettext wget python3 python3-pip \
           libelf-dev libaudit-dev pkgconf libgnutls28-dev device-tree-compiler \
           libudev-dev uuid-dev patchutils ccache
-        
+
         mkdir -p /opt/buildcache
         echo "CCACHE_DIR=/opt/buildcache" >> $GITHUB_ENV
 
@@ -134,10 +134,10 @@ jobs:
         else
           echo "Configuration file not found!"
         fi
-        
+
         chmod +x $GITHUB_WORKSPACE/${{ env.DIY_P2_SH }}
         $GITHUB_WORKSPACE/${{ env.DIY_P2_SH }}
-        
+
         make defconfig
 
     - name: SSH connection to Actions
@@ -172,14 +172,14 @@ jobs:
       run: |
         cd bin/targets/*/*
         ls -lhA
-        
+
         # Create output directories
         mkdir -p $GITHUB_WORKSPACE/output
         mkdir -p $GITHUB_WORKSPACE/output/packages
-        
+
         # Copy firmware files
         cp -rf ./* $GITHUB_WORKSPACE/output/ 2>/dev/null || true
-        
+
         # Create BUILDINFO summary
         cat > $GITHUB_WORKSPACE/output/BUILDINFO.txt << EOF
         ImmortalWrt 25.12 Build Information
@@ -190,10 +190,10 @@ jobs:
         Commit: ${{ env.CurrentCommitHash }}
         Build Host: $(hostname)
         System: $(uname -a)
-        
+
         Configuration: ${{ env.CONFIG_FILE }}
         EOF
-        
+
         ls -la $GITHUB_WORKSPACE/output/
 
     - name: Upload firmware to release
@@ -231,7 +231,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: always()
-    
+
     steps:
     - name: Send build status notification
       run: |

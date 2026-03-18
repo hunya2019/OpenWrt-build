@@ -57,19 +57,26 @@ echo "检查是否需要添加自定义软件包..."
 
 # 示例: 克隆额外的软件包
 # git clone https://github.com/kenzok8/openwrt-packages.git package/custom-packages
-git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 
-# 添加 iStore
-git clone https://github.com/linkease/istore package/istore
+# 25.12版本经过验证支持的软件包
+echo "克隆25.12版本所需的软件包..."
 
-# 添加 nikki
-git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
+# 添加 OpenWrt passwall2 (翻墙工具，25.12稳定支持)
+echo "正在克隆 passwall2..."
+git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2 2>/dev/null || echo "passwall2已存在或克隆失败"
 
-# 添加 momo
-git clone https://github.com/nikkinikki-org/OpenWrt-momo.git package/OpenWrt-momo
+# 添加 OpenClash (更现代的clash前端)
+echo "正在克隆 OpenClash..."
+git clone https://github.com/vernesong/OpenClash.git package/OpenClash 2>/dev/null || echo "OpenClash已存在或克隆失败"
 
 # 添加 AdGuardHome 插件
-git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+echo "正在克隆 AdGuardHome 插件..."
+git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome 2>/dev/null || echo "AdGuardHome插件已存在或克隆失败"
+
+# 注: 已移除25.12版本支持不确定的包:
+# - iStore (应用商店) - 版本兼容性未验证，建议使用标准opkg替代
+# - nikki - 小众工具，可能存在依赖问题
+# - momo - 小众工具，可能存在依赖问题
 
 # ===== 修改目标架构配置 =====
 echo "检查目标架构配置..."

@@ -102,11 +102,24 @@ if ! grep -q "CONFIG_PACKAGE_luci-theme-" .config; then
 fi
 
 # 如果自定义设置包存在，确保其启用
-if [ -f "package/emortal/default-settings/Makefile" ] && grep -q "my-default-settings" package/emortal/default-settings/Makefile; then
+if [ -f "package/emortal/default-settings/Makefile" ] && grep -q "my-default-set
+tings" package/emortal/default-settings/Makefile; then
     if ! grep -q "CONFIG_PACKAGE_my-default-settings=y" .config; then
         echo "CONFIG_PACKAGE_my-default-settings=y" >> .config
         echo "✓ 启用自定义默认设置包"
     fi
+fi
+
+# 注: iStore(应用商店)在25.12版本的支持不确定，已移除
+# 使用标准的opkg包管理系统替代
+if ! grep -q "CONFIG_PACKAGE_opkg=y" .config; then
+    echo "CONFIG_PACKAGE_opkg=y" >> .config
+    echo "✓ 启用标准opkg包管理"
+fi
+
+if ! grep -q "CONFIG_PACKAGE_luci-app-opkg=y" .config; then
+    echo "CONFIG_PACKAGE_luci-app-opkg=y" >> .config
+    echo "✓ 启用opkg包管理UI"
 fi
 
 # ===== 应用配置更改 =====
