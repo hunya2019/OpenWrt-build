@@ -214,3 +214,13 @@ CONFIG_VERSION_NICK="25.12"
 CONFIG_VERSION_NUMBER="25.12"
 CONFIG_VERSION_CODE="25.12"
 CONFIG_VERSION_BUILDDATE="$(date -u '+%Y-%m-%d')"
+
+#
+# 禁用存在依赖问题的包
+#
+# 注: 这些包由于依赖缺失或兼容性问题在25.12版本中被禁用
+# CONFIG_PACKAGE_mjpg-streamer is not set
+# CONFIG_PACKAGE_luci-app-mjpg-streamer is not set
+# CONFIG_PACKAGE_onionshare-cli is not set
+# CONFIG_PACKAGE_python3-pysocks is not set
+# CONFIG_PACKAGE_python3-unidecode is not set
