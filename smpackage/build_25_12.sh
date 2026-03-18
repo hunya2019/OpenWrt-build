@@ -74,12 +74,12 @@ init_source() {
         git commit -m "Initial commit for ImmortalWrt 25.12"
     fi
     
-    # 确保在正确的分支
-    if ! git branch | grep -q "25.12"; then
-        log_warn "切换到25.12分支..."
-        git checkout -b 25.12 2>/dev/null || git checkout 25.12
+    # 确保在正确的分支（使用openwrt-25.12）
+    if ! git branch | grep -q "openwrt-25.12"; then
+        log_warn "切换到openwrt-25.12分支..."
+        git checkout -b openwrt-25.12 2>/dev/null || git checkout openwrt-25.12
     else
-        git checkout 25.12
+        git checkout openwrt-25.12
     fi
     
     log_info "✓ 源码初始化完成"
