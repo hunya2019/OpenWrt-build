@@ -63,7 +63,7 @@ echo "克隆25.12版本所需的软件包..."
 
 # 添加 OpenWrt passwall2 (翻墙工具，25.12稳定支持)
 echo "正在克隆 passwall2..."
-git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2 2>/dev/null || echo "passwall2已存在或克隆失败"
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall2.git package/passwall2 2>/dev/null || echo "passwall2已存在或克隆失败"
 
 # 添加 OpenClash (更现代的clash前端)
 echo "正在克隆 OpenClash..."

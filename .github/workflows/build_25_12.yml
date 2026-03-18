@@ -126,6 +126,26 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
+        echo "=== Optimizing feeds configuration for 25.12 ==="
+
+        # 移除 openwrt feeds 自带的核心库（使用 PassWall 官方版本）
+        echo "Removing built-in core packages to use PassWall official versions..."
+        rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls} 2>/dev/null || echo "Some packages not found, continuing..."
+
+        # 克隆 PassWall 官方的软件包
+        echo "Cloning PassWall official packages..."
+        git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/passwall-packages 2>/dev/null || echo "PassWall packages already exist or clone failed"
+
+        # 移除 openwrt feeds 过时的 luci 版本
+        echo "Removing outdated LuCI PassWall app from feeds..."
+        rm -rf feeds/luci/applications/luci-app-passwall 2>/dev/null || echo "LuCI app not found"
+
+        # 克隆 PassWall 官方的 LuCI 应用
+        echo "Cloning PassWall official LuCI app..."
+        git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci 2>/dev/null || echo "PassWall LuCI app already exist or clone failed"
+
+        echo "✓ Feeds optimization completed"
+
     - name: Load custom configuration
       working-directory: ./openwrt
       run: |
