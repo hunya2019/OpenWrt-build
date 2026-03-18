@@ -11,11 +11,11 @@ on:
       ssh:
         description: 'SSH connection to Actions'
         required: false
-        default: 'false'
+        default: 'true'
         type: choice
         options:
-        - 'false'
         - 'true'
+        - 'false'
       CACHE_BUILD:
         description: '缓存加速'
         required: true
@@ -142,7 +142,7 @@ jobs:
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@main
-      if: (github.event.inputs.ssh == 'true' && github.event.name == 'workflow_dispatch') || contains(github.event.head_commit.message, '[ssh]')
+      if: github.event.inputs.ssh == 'true'
 
     - name: Download package
       working-directory: ./openwrt
