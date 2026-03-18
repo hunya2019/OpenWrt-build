@@ -176,9 +176,25 @@ jobs:
         # Create output directories
         mkdir -p $GITHUB_WORKSPACE/output
         mkdir -p $GITHUB_WORKSPACE/output/packages
+        mkdir -p $GITHUB_WORKSPACE/output/apk
 
         # Copy firmware files
         cp -rf ./* $GITHUB_WORKSPACE/output/ 2>/dev/null || true
+
+        # Find and copy APK packages if they exist
+        echo "Looking for APK packages..."
+        find ./packages -name "*.apk" -type f 2>/dev/null && {
+          echo "Found APK files, copying to output..."
+          cp -r ./packages/*.apk $GITHUB_WORKSPACE/output/apk/ 2>/dev/null || true
+        } || echo "No APK packages found in packages directory"
+
+        # If APKs exist, create a compressed archive
+        if [ -f "$(ls $GITHUB_WORKSPACE/output/apk/*.apk 2>/dev/null | head -1)" ]; then
+          echo "Creating APK archive..."
+          cd $GITHUB_WORKSPACE/output
+          tar -czf immortalwrt-25.12-apk-$(date +%Y%m%d).tar.gz apk/
+          ls -lh immortalwrt-25.12-apk-*.tar.gz
+        fi
 
         # Create BUILDINFO summary
         cat > $GITHUB_WORKSPACE/output/BUILDINFO.txt << EOF
@@ -192,6 +208,10 @@ jobs:
         System: $(uname -a)
 
         Configuration: ${{ env.CONFIG_FILE }}
+
+        Output Files:
+        - Firmware images: firmware files
+        - APK packages: apk/ directory
         EOF
 
         ls -la $GITHUB_WORKSPACE/output/
@@ -212,6 +232,16 @@ jobs:
         path: |
           ${{ github.workspace }}/output/BUILDINFO.txt
           ${{ github.workspace }}/build.log
+
+    - name: Upload APK packages
+      uses: actions/upload-artifact@main
+      if: env.UPLOAD_PACKAGE == 'true' && !cancelled()
+      with:
+        name: ImmortalWrt-25.12-apk-packages-${{ env.Build_Date }}
+        path: |
+          ${{ github.workspace }}/output/apk/
+          ${{ github.workspace }}/output/immortalwrt-25.12-apk-*.tar.gz
+        retention-days: 30
 
     - name: Upload firmware
       uses: actions/upload-artifact@main
