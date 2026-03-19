@@ -77,9 +77,12 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app
 echo "正在克隆 nikki..."
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki 2>/dev/null || echo "nikki已存在或克隆失败"
 
+# 添加 momo 工具
+echo "正在克隆 momo..."
+git clone https://github.com/nikkinikki-org/OpenWrt-momo.git package/OpenWrt-momo 2>/dev/null || echo "momo已存在或克隆失败"
+
 # 注: 已移除25.12版本支持不确定的包:
 # - iStore (应用商店) - 版本兼容性未验证，建议使用标准opkg替代
-# - momo - 小众工具，可能存在依赖问题
 
 # ===== 修改目标架构配置 =====
 echo "检查目标架构配置..."
