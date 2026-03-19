@@ -1,0 +1,215 @@
+# 
+# ImmortalWrt 25.12 - NanoPi R3S 编译配置
+# 版本: 2026-03-19
+# 设备: FriendlyElec NanoPi R3S (Rockchip RK3568)
+# 此配置为R3S设备的推荐配置
+#
+
+CONFIG_MODULES=y
+CONFIG_HAVE_DOT_CONFIG=y
+CONFIG_HOST_OS_LINUX=y
+
+#
+# 25.12 版本特定配置 - Rockchip 平台 (R3S)
+#
+CONFIG_TARGET_rockchip=y
+CONFIG_TARGET_rockchip_armv8=y
+CONFIG_TARGET_rockchip_armv8_DEVICE_friendlyarm_nanopi_r3s=y
+
+#
+# 编译选项
+#
+CONFIG_CCACHE=y
+CONFIG_CCACHE_DIR=""
+
+#
+# 基础系统
+#
+CONFIG_PACKAGE_libc=y
+CONFIG_PACKAGE_libgcc=y
+CONFIG_PACKAGE_libuci=y
+CONFIG_PACKAGE_libubus=y
+CONFIG_PACKAGE_uci=y
+CONFIG_PACKAGE_urandom-seed=y
+CONFIG_PACKAGE_ubase=y
+CONFIG_PACKAGE_protobuf=y
+CONFIG_PACKAGE_kmod-bnx2=n
+CONFIG_PACKAGE_kmod-bnx2x=n
+CONFIG_PACKAGE_kmod-ixgbe=n
+CONFIG_PACKAGE_kmod-ige-wan=n
+CONFIG_PACKAGE_kmod-igc=n
+
+#
+# NanoPi R3S 网络驱动
+#
+CONFIG_PACKAGE_kmod-rtl8111=y
+CONFIG_PACKAGE_kmod-rtl8152=y
+CONFIG_PACKAGE_kmod-rtl8169=y
+
+#
+# LuCI Web 界面
+#
+CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-base=y
+CONFIG_PACKAGE_luci-lib-base=y
+CONFIG_PACKAGE_luci-lib-ip=y
+CONFIG_PACKAGE_luci-lib-jsonc=y
+CONFIG_PACKAGE_luci-lib-nixio=y
+CONFIG_PACKAGE_luci-mod-admin-full=y
+CONFIG_PACKAGE_luci-mod-network=y
+CONFIG_PACKAGE_luci-mod-system=y
+CONFIG_PACKAGE_luci-mod-status=y
+
+#
+# LuCI 中文支持
+#
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-network-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-opkg-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-system-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y
+
+#
+# LuCI 主题
+#
+CONFIG_PACKAGE_luci-theme-bootstrap=y
+CONFIG_PACKAGE_luci-theme-argon=y
+
+#
+# LuCI 应用
+#
+CONFIG_PACKAGE_luci-app-firewall=y
+CONFIG_PACKAGE_luci-app-opkg=y
+CONFIG_PACKAGE_luci-app-statistics=y
+CONFIG_PACKAGE_luci-app-uhttpd=y
+
+#
+# 网络工具
+#
+CONFIG_PACKAGE_ipv6helper=y
+CONFIG_PACKAGE_ppp=y
+CONFIG_PACKAGE_ppp-mod-pppoe=y
+CONFIG_PACKAGE_firewall=y
+CONFIG_PACKAGE_firewall4=y
+CONFIG_PACKAGE_nftables=y
+
+#
+# 管理工具
+#
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_wget-ssl=y
+CONFIG_PACKAGE_openssh-client=y
+CONFIG_PACKAGE_openssh-server=y
+CONFIG_PACKAGE_openssh-sftp-server=y
+
+#
+# 文件系统和存储
+#
+CONFIG_PACKAGE_e2fsprogs=y
+CONFIG_PACKAGE_ntfs-3g=y
+CONFIG_PACKAGE_exfat=y
+CONFIG_PACKAGE_block-mount=y
+CONFIG_PACKAGE_fdisk=y
+CONFIG_PACKAGE_parted=y
+
+#
+# 高级功能 - PassWall2（翻墙工具）
+#
+CONFIG_PACKAGE_passwall2-core=y
+CONFIG_PACKAGE_passwall2-tools=y
+
+#
+# 高级功能 - OpenClash
+#
+CONFIG_PACKAGE_openclash=y
+
+#
+# 高级功能 - AdGuardHome
+#
+CONFIG_PACKAGE_adguardhome=y
+CONFIG_PACKAGE_luci-app-adguardhome=y
+
+#
+# 高级功能 - nikki (流量分析工具)
+#
+CONFIG_PACKAGE_nikki=y
+
+#
+# 高级功能 - momo (内存优化工具)
+#
+CONFIG_PACKAGE_momo=y
+
+#
+# 高级功能 - 标准包管理系统
+#
+CONFIG_PACKAGE_opkg=y
+CONFIG_PACKAGE_luci-app-opkg=y
+
+#
+# DNS 服务
+#
+CONFIG_PACKAGE_dnsmasq-full=y
+CONFIG_PACKAGE_dnsmasq_full_dhcp=y
+CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
+CONFIG_PACKAGE_dnsmasq_full_dnssec=y
+CONFIG_PACKAGE_dnsmasq_full_auth=y
+
+#
+# 系统实用工具
+#
+CONFIG_PACKAGE_bash=y
+CONFIG_PACKAGE_coreutils-full=y
+CONFIG_PACKAGE_diffutils=y
+CONFIG_PACKAGE_findutils=y
+CONFIG_PACKAGE_grep=y
+CONFIG_PACKAGE_gzip=y
+CONFIG_PACKAGE_nano=y
+CONFIG_PACKAGE_tar=y
+CONFIG_PACKAGE_unzip=y
+CONFIG_PACKAGE_zip=y
+CONFIG_PACKAGE_htop=y
+CONFIG_PACKAGE_iotop=y
+
+#
+# 监控和性能
+#
+CONFIG_PACKAGE_collectd=y
+CONFIG_PACKAGE_collectd-mod-cpu=y
+CONFIG_PACKAGE_collectd-mod-interface=y
+CONFIG_PACKAGE_collectd-mod-iwinfo=y
+CONFIG_PACKAGE_collectd-mod-load=y
+CONFIG_PACKAGE_collectd-mod-memory=y
+CONFIG_PACKAGE_collectd-mod-rrdtool=y
+CONFIG_PACKAGE_rrdtool=y
+
+#
+# Lua脚本支持
+#
+CONFIG_PACKAGE_lua=y
+CONFIG_PACKAGE_liblua=y
+CONFIG_PACKAGE_luci-lib-ltn12=y
+CONFIG_PACKAGE_luci-lib-luanet=y
+
+#
+# 启用 IPv6 支持
+#
+CONFIG_PACKAGE_odhcp6c=y
+CONFIG_PACKAGE_odhcpd-ipv6only=y
+
+#
+# 版本标记
+#
+CONFIG_VERSION_DIST="ImmortalWrt"
+CONFIG_VERSION_NICK="25.12-R3S"
+CONFIG_VERSION_NUMBER="25.12"
+CONFIG_VERSION_CODE="25.12-R3S"
+
+#
+# 禁用存在依赖问题的包
+#
+# CONFIG_PACKAGE_mjpg-streamer is not set
+# CONFIG_PACKAGE_luci-app-mjpg-streamer is not set
+# CONFIG_PACKAGE_onionshare-cli is not set
+# CONFIG_PACKAGE_python3-pysocks is not set
+# CONFIG_PACKAGE_python3-unidecode is not set
