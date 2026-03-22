@@ -188,9 +188,12 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-    - name: SSH连接到Actions
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh != 'false') || contains(github.event.action, 'ssh')
-      uses: P3TERX/ssh2actions@v1.0.0
+    - name: SSH连接到Actions调试编译
+      uses: mxschmitt/action-tmate@v3
+      if: ${{ failure() || (github.event_name == 'workflow_dispatch' && github.event.inputs.ssh == 'true') }}
+      with:
+        limit-access-to-actor: true
+        install-dependencies: false
 
     - name: 输出编译信息
       run: |
@@ -230,6 +233,14 @@ jobs:
           echo "ℹ 未检测到选中的插件"
         fi
         rm -rf {Plug-in,Plug-2} 2>/dev/null || true
+
+    - name: SSH调试 - 编译前(可选)
+      uses: mxschmitt/action-tmate@v3
+      if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ssh == 'true' }}
+      with:
+        limit-access-to-actor: true
+        install-dependencies: false
+        timeout-minutes: 30
 
     - name: 下载固件包
       id: package
