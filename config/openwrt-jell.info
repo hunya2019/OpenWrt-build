@@ -1,0 +1,35 @@
+# OpenWrt + Jell 编译配置文件
+# 此文件将在首次编译后由GitHub Actions自动生成和更新
+# 包含编译时选择的所有软件包和内核模块配置
+
+# =============================================================================
+# 基础配置示例（在手动编译时可参考此结构）
+# =============================================================================
+
+# 目标设备配置（示例）
+# CONFIG_TARGET_ramips=y
+# CONFIG_TARGET_ramips_mt7621=y
+# CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-3g=y
+
+# LuCI Web界面
+# CONFIG_PACKAGE_luci=y
+# CONFIG_PACKAGE_luci-ssl-openssl=y
+# CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+
+# 语言支持
+# CONFIG_PACKAGE_libustream-openssl=y
+# CONFIG_PACKAGE_libustream-wolfssl=y
+
+# 常用工具
+# CONFIG_PACKAGE_curl=y
+# CONFIG_PACKAGE_wget=y
+# CONFIG_PACKAGE_git=y
+
+# 网络相关
+# CONFIG_PACKAGE_kmod-ath9k=y
+# CONFIG_PACKAGE_kmod-ath10k=y
+
+# =============================================================================
+# 注意: 实际编译配置会根据手动选择或上次编译结果填充
+# 第一次编译时可保持此文件为空或注释状态
+# =============================================================================
