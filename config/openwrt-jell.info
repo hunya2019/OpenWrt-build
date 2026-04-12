@@ -131,7 +131,8 @@ CONFIG_TARGET_mediatek_filogic=y
 # CONFIG_TARGET_mediatek_filogic_DEVICE_glinet_gl-xe3000 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_h3c_magic-nx30-pro is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_huasifei_wh3000 is not set
-# CONFIG_TARGET_mediatek_filogic_DEVICE_huasifei_wh3000-pro is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_huasifei_wh3000-pro-emmc is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_huasifei_wh3000-pro-nand is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_imou_hx21 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_iptime_ax3000q is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_iptime_ax3000se is not set
@@ -3434,6 +3435,7 @@ CONFIG_PACKAGE_kmod-mt7981-firmware=y
 # CONFIG_PACKAGE_kmod-wlcore is not set
 # end of Wireless Drivers
 
+CONFIG_PACKAGE_kmod-phy-mtk-tphy=y
 CONFIG_PACKAGE_kmod-usb-common=y
 # end of Kernel modules
 
@@ -3787,7 +3789,6 @@ CONFIG_HAS_LUAJIT_ARCH=y
 # CONFIG_PACKAGE_python3-pyelftools is not set
 # CONFIG_PACKAGE_python3-pyfuse3 is not set
 # CONFIG_PACKAGE_python3-pygments is not set
-# CONFIG_PACKAGE_python3-pyinotify is not set
 # CONFIG_PACKAGE_python3-pymysql is not set
 # CONFIG_PACKAGE_python3-pymysql-sha-pwd is not set
 # CONFIG_PACKAGE_python3-pynacl is not set
@@ -5727,7 +5728,9 @@ CONFIG_PACKAGE_luci-app-webd_INCLUDE_WEBD_BINARY=y
 #
 # 5. Plugins
 #
-# CONFIG_PACKAGE_plugins-example is not set
+# CONFIG_PACKAGE_luci-plugin-2fa is not set
+# CONFIG_PACKAGE_luci-plugin-auth-example is not set
+# CONFIG_PACKAGE_luci-plugin-examples is not set
 # end of 5. Plugins
 
 #
@@ -7709,6 +7712,7 @@ CONFIG_PACKAGE_uboot-envtools=y
 # CONFIG_PACKAGE_coap-client is not set
 # CONFIG_PACKAGE_collectd is not set
 # CONFIG_PACKAGE_colrm is not set
+# CONFIG_PACKAGE_column is not set
 # CONFIG_PACKAGE_conmon is not set
 # CONFIG_PACKAGE_containerd is not set
 # CONFIG_PACKAGE_coremark is not set
