@@ -63,6 +63,7 @@ CONFIG_TARGET_mediatek_filogic=y
 # CONFIG_TARGET_mediatek_filogic_DEVICE_acer_predator-w6x-stock is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_acer_predator-w6x-ubootmod is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_acer_vero-w6m is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_alwaylink_m01k43 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_asiarf_ap7986-003 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_smartrg_sdg-8612 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_smartrg_sdg-8614 is not set
@@ -135,10 +136,12 @@ CONFIG_TARGET_mediatek_filogic=y
 # CONFIG_TARGET_mediatek_filogic_DEVICE_glinet_gl-mt6000 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_glinet_gl-x3000 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_glinet_gl-xe3000 is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_globitel_bt-r320 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_h3c_magic-nx30-pro is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_huasifei_wh3000 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_huasifei_wh3000-pro-emmc is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_huasifei_wh3000-pro-nand is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_huasifei_wh3000r-nand is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_imou_hx21 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_iptime_ax3000q is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_iptime_ax3000se is not set
@@ -170,6 +173,7 @@ CONFIG_TARGET_mediatek_filogic=y
 # CONFIG_TARGET_mediatek_filogic_DEVICE_netcraze_nc-1812 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_netgear_eax17 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_netgear_wax220 is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_netis_eap930-v1 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_netis_nx30v2 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_netis_nx31 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_netis_nx32u is not set
@@ -225,6 +229,7 @@ CONFIG_TARGET_mediatek_filogic_DEVICE_openwrt_one=y
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zbtlink_zbt-z8103ax-c is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zbtlink_zbt-z8106ax-s is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zbtlink_zbt-z8106ax-t is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_zbtlink_zbt-z8803be is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_ex5601-t0-stock is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_ex5601-t0-ubootmod is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_ex5700-telenor is not set
@@ -1803,6 +1808,7 @@ CONFIG_DROPBEAR_KEX_REKEY_TIMEOUT=28800
 CONFIG_DROPBEAR_KEX_REKEY_DATA=1073741824
 CONFIG_DROPBEAR_AUTH_TIMEOUT=300
 CONFIG_DROPBEAR_MAX_AUTH_TRIES=10
+CONFIG_DROPBEAR_MAX_PUBKEY_QUERIES=15
 CONFIG_DROPBEAR_UNAUTH_CLOSE_DELAY=0
 CONFIG_DROPBEAR_MAX_UNAUTH_PER_IP=5
 CONFIG_DROPBEAR_MAX_UNAUTH_CLIENTS=30
@@ -1810,6 +1816,7 @@ CONFIG_DROPBEAR_DEFAULT_RECV_WINDOW=262144
 CONFIG_DROPBEAR_DEFAULT_KEEPALIVE=0
 CONFIG_DROPBEAR_DEFAULT_KEEPALIVE_LIMIT=3
 CONFIG_DROPBEAR_DEFAULT_IDLE_TIMEOUT=0
+CONFIG_DROPBEAR_DEFAULT_MAX_DURATION=0
 # end of Resource limits
 
 #
@@ -2981,6 +2988,7 @@ CONFIG_PACKAGE_kmod-phy-airoha-en8811h=y
 # CONFIG_PACKAGE_kmod-r8168 is not set
 # CONFIG_PACKAGE_kmod-r8168-rss is not set
 # CONFIG_PACKAGE_kmod-r8169 is not set
+# CONFIG_PACKAGE_kmod-renesas-rzn-pcs is not set
 # CONFIG_PACKAGE_kmod-rmnet is not set
 # CONFIG_PACKAGE_kmod-sfc is not set
 # CONFIG_PACKAGE_kmod-sfc-falcon is not set
@@ -5334,8 +5342,8 @@ CONFIG_LUCI_CSSTIDY=y
 # CONFIG_PACKAGE_luci-app-autoreboot is not set
 # CONFIG_PACKAGE_luci-app-autorepeater is not set
 # CONFIG_PACKAGE_luci-app-autoshell is not set
-# CONFIG_PACKAGE_luci-app-autoupdate is not set
 # CONFIG_PACKAGE_luci-app-babeld is not set
+# CONFIG_PACKAGE_luci-app-baidudrive is not set
 # CONFIG_PACKAGE_luci-app-baidupcs-web is not set
 # CONFIG_PACKAGE_luci-app-bandix is not set
 # CONFIG_PACKAGE_luci-app-banip is not set
@@ -5363,6 +5371,7 @@ CONFIG_LUCI_CSSTIDY=y
 # CONFIG_PACKAGE_luci-app-cifs-mount is not set
 # CONFIG_PACKAGE_luci-app-cjdns is not set
 # CONFIG_PACKAGE_luci-app-clamav is not set
+# CONFIG_PACKAGE_luci-app-clashoo is not set
 # CONFIG_PACKAGE_luci-app-clouddrive2 is not set
 # CONFIG_PACKAGE_luci-app-cloudflared is not set
 # CONFIG_PACKAGE_luci-app-cloudflarespeedtest is not set
@@ -5384,7 +5393,8 @@ CONFIG_LUCI_CSSTIDY=y
 # CONFIG_PACKAGE_luci-app-crowdsec-firewall-bouncer is not set
 # CONFIG_PACKAGE_luci-app-csshnpd is not set
 # CONFIG_PACKAGE_luci-app-cupsd is not set
-# CONFIG_PACKAGE_luci-app-daed is not set
+CONFIG_PACKAGE_luci-app-daede_daed=y
+# CONFIG_PACKAGE_luci-app-daede_dae is not set
 # CONFIG_PACKAGE_luci-app-dawn is not set
 # CONFIG_PACKAGE_luci-app-dcwapd is not set
 # CONFIG_PACKAGE_luci-app-ddns is not set
@@ -5473,7 +5483,6 @@ CONFIG_LUCI_CSSTIDY=y
 # CONFIG_PACKAGE_luci-app-interfaces-statistics is not set
 # CONFIG_PACKAGE_luci-app-internet-detector is not set
 # CONFIG_PACKAGE_luci-app-iperf is not set
-# CONFIG_PACKAGE_luci-app-iperf3-server is not set
 # CONFIG_PACKAGE_luci-app-ipinfo is not set
 # CONFIG_PACKAGE_luci-app-iptvhelper is not set
 # CONFIG_PACKAGE_luci-app-ipv6clientfilter is not set
@@ -5534,8 +5543,6 @@ CONFIG_LUCI_CSSTIDY=y
 # CONFIG_PACKAGE_luci-app-nat6-helper is not set
 # CONFIG_PACKAGE_luci-app-natmap is not set
 # CONFIG_PACKAGE_luci-app-natmapt is not set
-# CONFIG_PACKAGE_luci-app-natter is not set
-# CONFIG_PACKAGE_luci-app-natter2 is not set
 # CONFIG_PACKAGE_luci-app-navidrome is not set
 # CONFIG_PACKAGE_luci-app-neko is not set
 # CONFIG_PACKAGE_luci-app-netdata is not set
@@ -5555,7 +5562,6 @@ CONFIG_LUCI_CSSTIDY=y
 # CONFIG_PACKAGE_luci-app-njitclient is not set
 # CONFIG_PACKAGE_luci-app-nlbwmon is not set
 # CONFIG_PACKAGE_luci-app-nodogsplash is not set
-# CONFIG_PACKAGE_luci-app-npc is not set
 # CONFIG_PACKAGE_luci-app-nps is not set
 # CONFIG_PACKAGE_luci-app-nut is not set
 # CONFIG_PACKAGE_luci-app-nvr is not set
@@ -5568,7 +5574,6 @@ CONFIG_LUCI_CSSTIDY=y
 # CONFIG_PACKAGE_luci-app-omcproxy is not set
 # CONFIG_PACKAGE_luci-app-oneapi is not set
 # CONFIG_PACKAGE_luci-app-onekeyap is not set
-# CONFIG_PACKAGE_luci-app-onliner is not set
 # CONFIG_PACKAGE_luci-app-openai is not set
 # CONFIG_PACKAGE_luci-app-openclash is not set
 # CONFIG_PACKAGE_iptables-mod-tproxy is not set
@@ -5651,7 +5656,6 @@ CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng=y
 # CONFIG_PACKAGE_luci-app-shairplay is not set
 # CONFIG_PACKAGE_luci-app-shanligong is not set
 # CONFIG_PACKAGE_luci-app-shortcutmenu is not set
-# CONFIG_PACKAGE_luci-app-shutdown is not set
 # CONFIG_PACKAGE_luci-app-smartdns is not set
 # CONFIG_PACKAGE_luci-app-smartinfo is not set
 # CONFIG_PACKAGE_luci-app-smartvpn is not set
@@ -5768,11 +5772,10 @@ CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go=y
 # CONFIG_PACKAGE_luci-app-watchcat is not set
 # CONFIG_PACKAGE_luci-app-watchdog is not set
 # CONFIG_PACKAGE_luci-app-webadmin is not set
-# CONFIG_PACKAGE_luci-app-webd is not set
-CONFIG_PACKAGE_luci-app-webd_INCLUDE_WEBD_BINARY=y
 # CONFIG_PACKAGE_luci-app-webviewdev is not set
 # CONFIG_PACKAGE_luci-app-webvirtcloud is not set
 # CONFIG_PACKAGE_luci-app-wechatpush is not set
+# CONFIG_PACKAGE_luci-app-wifi-ap is not set
 # CONFIG_PACKAGE_luci-app-wifidog is not set
 # CONFIG_PACKAGE_luci-app-wifihistory is not set
 # CONFIG_PACKAGE_luci-app-wifischedule is not set
@@ -5897,6 +5900,7 @@ CONFIG_PACKAGE_luci-app-webd_INCLUDE_WEBD_BINARY=y
 # end of 9. Themes
 
 # CONFIG_PACKAGE_default-settings is not set
+# CONFIG_PACKAGE_luci-i18n-clashoo-zh-cn is not set
 # CONFIG_PACKAGE_my-default-settings is not set
 # end of LuCI
 
@@ -6393,6 +6397,14 @@ CONFIG_PACKAGE_knot-resolver_dnstap=y
 # end of Mesh
 
 #
+# Meshtastic
+#
+# CONFIG_PACKAGE_meshtasticd-avahi-service is not set
+# CONFIG_PACKAGE_meshtasticd-full is not set
+# CONFIG_PACKAGE_meshtasticd-web is not set
+# end of Meshtastic
+
+#
 # NMAP Suite
 #
 # CONFIG_PACKAGE_ncat is not set
@@ -6734,14 +6746,12 @@ CONFIG_PACKAGE_knot-resolver_dnstap=y
 # CONFIG_PACKAGE_alist is not set
 # CONFIG_PACKAGE_alwaysonline is not set
 # CONFIG_PACKAGE_apache is not set
+# CONFIG_PACKAGE_baidudrive is not set
 # CONFIG_PACKAGE_brook is not set
 # CONFIG_PACKAGE_caddy is not set
 # CONFIG_PACKAGE_cgi-io is not set
 # CONFIG_PACKAGE_clamav is not set
 # CONFIG_PACKAGE_cloudflared is not set
-# CONFIG_PACKAGE_daed is not set
-CONFIG_DAED_USE_VMLINUX_BTF=y
-# CONFIG_DAED_USE_BPF_DEPENDS is not set
 # CONFIG_PACKAGE_ddns-go is not set
 # CONFIG_PACKAGE_ddnsto is not set
 # CONFIG_PACKAGE_dufs is not set
@@ -6763,9 +6773,9 @@ CONFIG_DAED_USE_VMLINUX_BTF=y
 # CONFIG_PACKAGE_microsocks is not set
 # CONFIG_PACKAGE_naiveproxy is not set
 # CONFIG_PACKAGE_nginx-full is not set
-# CONFIG_PACKAGE_nginx-ssl is not set
 # CONFIG_PACKAGE_nginx-mod-lua-resty-core is not set
 # CONFIG_PACKAGE_nginx-mod-lua-resty-lrucache is not set
+# CONFIG_PACKAGE_nginx-ssl is not set
 # CONFIG_PACKAGE_nginx-ssl-util is not set
 # CONFIG_PACKAGE_nginx-ssl-util-nopcre is not set
 # CONFIG_PACKAGE_ngrokc is not set
@@ -6964,6 +6974,7 @@ CONFIG_PACKAGE_wpad-basic-mbedtls=y
 # CONFIG_PACKAGE_bwping is not set
 # CONFIG_PACKAGE_cdnspeedtest is not set
 # CONFIG_PACKAGE_chat is not set
+# CONFIG_PACKAGE_clashoo is not set
 # CONFIG_PACKAGE_clouddrive2 is not set
 # CONFIG_PACKAGE_cni-route-override is not set
 # CONFIG_PACKAGE_coap-server is not set
@@ -7113,8 +7124,6 @@ CONFIG_PACKAGE_mihomo=y
 # CONFIG_PACKAGE_natmapt-notify-script-pushbullet is not set
 # CONFIG_PACKAGE_natmapt-notify-script-pushover is not set
 # CONFIG_PACKAGE_natmapt-notify-script-telegram is not set
-# CONFIG_PACKAGE_natter is not set
-# CONFIG_PACKAGE_natter2 is not set
 # CONFIG_PACKAGE_nbd is not set
 # CONFIG_PACKAGE_nbd-server is not set
 # CONFIG_PACKAGE_ncp is not set
@@ -7185,7 +7194,6 @@ CONFIG_PACKAGE_ppp-mod-pppoe=y
 # CONFIG_PACKAGE_ratechecker is not set
 # CONFIG_PACKAGE_ratelimit is not set
 # CONFIG_PACKAGE_realtek-poe is not set
-# CONFIG_PACKAGE_redsocks is not set
 # CONFIG_PACKAGE_remserial is not set
 # CONFIG_PACKAGE_respondd is not set
 # CONFIG_PACKAGE_restic-rest-server is not set
@@ -7441,7 +7449,6 @@ CONFIG_PACKAGE_uboot-envtools=y
 # CONFIG_PACKAGE_pigz is not set
 # CONFIG_PACKAGE_unrar is not set
 # CONFIG_PACKAGE_unzip is not set
-# CONFIG_PACKAGE_upx-static is not set
 # CONFIG_PACKAGE_xz-utils is not set
 # CONFIG_PACKAGE_zip is not set
 # CONFIG_PACKAGE_zipcmp is not set
@@ -7782,7 +7789,6 @@ CONFIG_PACKAGE_uboot-envtools=y
 # CONFIG_PACKAGE_augeas is not set
 # CONFIG_PACKAGE_augeas-lenses is not set
 # CONFIG_PACKAGE_augeas-lenses-tests is not set
-# CONFIG_PACKAGE_autoupdate is not set
 # CONFIG_PACKAGE_base16384 is not set
 # CONFIG_PACKAGE_bc is not set
 # CONFIG_PACKAGE_bcrypt-tool is not set
