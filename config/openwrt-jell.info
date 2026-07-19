@@ -2110,7 +2110,7 @@ CONFIG_PACKAGE_u-boot-mt7981_openwrt_one-snand=y
 # end of Web Servers/Proxies
 
 # CONFIG_PACKAGE_3proxy-sql is not set
-# CONFIG_PACKAGE_autocore-arm is not set
+# CONFIG_PACKAGE_autocore is not set
 # CONFIG_PACKAGE_automount is not set
 # CONFIG_PACKAGE_autosamba is not set
 CONFIG_PACKAGE_autosamba_INCLUDE_KSMBD=y
@@ -2529,7 +2529,6 @@ CONFIG_PACKAGE_kmod-crypto-manager=y
 # CONFIG_PACKAGE_kmod-crypto-md4 is not set
 CONFIG_PACKAGE_kmod-crypto-md5=y
 # CONFIG_PACKAGE_kmod-crypto-michael-mic is not set
-# CONFIG_PACKAGE_kmod-crypto-misc is not set
 CONFIG_PACKAGE_kmod-crypto-null=y
 # CONFIG_PACKAGE_kmod-crypto-pcbc is not set
 # CONFIG_PACKAGE_kmod-crypto-rmd160 is not set
@@ -3780,8 +3779,6 @@ CONFIG_PACKAGE_lyaml=y
 # CONFIG_PACKAGE_python3-django-cors-headers is not set
 # CONFIG_PACKAGE_python3-django-restframework is not set
 # CONFIG_PACKAGE_python3-dns is not set
-# CONFIG_PACKAGE_python3-docker is not set
-# CONFIG_PACKAGE_python3-dockerpty is not set
 # CONFIG_PACKAGE_python3-docopt is not set
 # CONFIG_PACKAGE_python3-docutils is not set
 # CONFIG_PACKAGE_python3-dotenv is not set
@@ -3861,7 +3858,7 @@ CONFIG_PACKAGE_lyaml=y
 # CONFIG_PACKAGE_python3-outcome is not set
 # CONFIG_PACKAGE_python3-packaging is not set
 # CONFIG_PACKAGE_python3-paho-mqtt is not set
-# CONFIG_PACKAGE_python3-paramiko is not set
+# CONFIG_PACKAGE_python3-pexpect is not set
 # CONFIG_PACKAGE_python3-pika is not set
 # CONFIG_PACKAGE_python3-pillow is not set
 # CONFIG_PACKAGE_python3-pip is not set
@@ -3871,6 +3868,7 @@ CONFIG_PACKAGE_lyaml=y
 # CONFIG_PACKAGE_python3-protobuf is not set
 # CONFIG_PACKAGE_python3-psutil is not set
 # CONFIG_PACKAGE_python3-psycopg2 is not set
+# CONFIG_PACKAGE_python3-ptyprocess is not set
 # CONFIG_PACKAGE_python3-py is not set
 # CONFIG_PACKAGE_python3-pyasn1 is not set
 # CONFIG_PACKAGE_python3-pyasn1-modules is not set
@@ -3947,7 +3945,6 @@ CONFIG_PACKAGE_lyaml=y
 # CONFIG_PACKAGE_python3-uvicorn is not set
 # CONFIG_PACKAGE_python3-venv is not set
 # CONFIG_PACKAGE_python3-vobject is not set
-# CONFIG_PACKAGE_python3-websocket-client is not set
 # CONFIG_PACKAGE_python3-websockets is not set
 # CONFIG_PACKAGE_python3-werkzeug is not set
 # CONFIG_PACKAGE_python3-wsproto is not set
@@ -4960,7 +4957,6 @@ CONFIG_PACKAGE_libblobmsg-json=y
 # CONFIG_PACKAGE_libiw is not set
 # CONFIG_PACKAGE_libiwinfo is not set
 # CONFIG_PACKAGE_libjaylink is not set
-# CONFIG_PACKAGE_libjcat is not set
 # CONFIG_PACKAGE_libjemalloc is not set
 # CONFIG_PACKAGE_libjpeg-turbo is not set
 CONFIG_PACKAGE_libjson-c=y
@@ -7009,9 +7005,6 @@ CONFIG_PACKAGE_wpad-basic-mbedtls=y
 # CONFIG_PACKAGE_apcupsd-cgi is not set
 # CONFIG_PACKAGE_apinger is not set
 # CONFIG_PACKAGE_apinger-rrd is not set
-# CONFIG_PACKAGE_atlas-probe is not set
-# CONFIG_PACKAGE_atlas-sw-probe is not set
-# CONFIG_PACKAGE_atlas-sw-probe-rpc is not set
 # CONFIG_PACKAGE_baidupcs-web is not set
 # CONFIG_PACKAGE_bandix is not set
 # CONFIG_PACKAGE_banip is not set
@@ -7262,6 +7255,9 @@ CONFIG_PACKAGE_ppp-mod-pppoe=y
 # CONFIG_PACKAGE_respondd is not set
 # CONFIG_PACKAGE_restic-rest-server is not set
 # CONFIG_PACKAGE_rgmac is not set
+# CONFIG_PACKAGE_ripe-atlas-anchor is not set
+# CONFIG_PACKAGE_ripe-atlas-common is not set
+# CONFIG_PACKAGE_ripe-atlas-probe is not set
 # CONFIG_PACKAGE_rpcapd is not set
 # CONFIG_PACKAGE_rpcbind is not set
 # CONFIG_PACKAGE_rssileds is not set
@@ -7514,6 +7510,7 @@ CONFIG_PACKAGE_uboot-envtools=y
 # CONFIG_PACKAGE_pigz is not set
 # CONFIG_PACKAGE_unrar is not set
 # CONFIG_PACKAGE_unzip is not set
+# CONFIG_PACKAGE_upx is not set
 # CONFIG_PACKAGE_xz-utils is not set
 # CONFIG_PACKAGE_zip is not set
 # CONFIG_PACKAGE_zipcmp is not set
@@ -8070,10 +8067,11 @@ CONFIG_PACKAGE_coreutils-timeout=y
 # CONFIG_FWUPD_FIRMWARE_PACKAGER is not set
 # CONFIG_FWUPD_HSI is not set
 CONFIG_FWUPD_LVFS=y
-# CONFIG_FWUPD_CBOR is not set
+# CONFIG_FWUPD_GNUTLS is not set
+CONFIG_FWUPD_OPENSSL=y
 # CONFIG_FWUPD_LIBDRM is not set
+CONFIG_FWUPD_PLUGIN_DEVLINK=y
 CONFIG_FWUPD_PLUGIN_MODEMMANAGER=y
-CONFIG_FWUPD_PLUGIN_FLASHROM=y
 # end of Select fwupd options
 
 # CONFIG_PACKAGE_fwupd-tools is not set
@@ -8312,6 +8310,30 @@ CONFIG_STRACE_NONE=y
 # CONFIG_STRACE_LIBUNWIND is not set
 # CONFIG_PACKAGE_strelaysrv is not set
 # CONFIG_PACKAGE_stress-ng is not set
+
+#
+# Configuration
+#
+
+#
+# Stressors that need an external library
+#
+# CONFIG_STRESS_NG_LIB_ACL is not set
+CONFIG_STRESS_NG_LIB_AIO=y
+# CONFIG_STRESS_NG_LIB_APPARMOR is not set
+CONFIG_STRESS_NG_LIB_BSD=y
+CONFIG_STRESS_NG_LIB_CRYPT=y
+# CONFIG_STRESS_NG_LIB_GMP is not set
+CONFIG_STRESS_NG_LIB_JPEG=y
+CONFIG_STRESS_NG_LIB_KMOD=y
+# CONFIG_STRESS_NG_LIB_LZMA is not set
+# CONFIG_STRESS_NG_LIB_MD is not set
+# CONFIG_STRESS_NG_LIB_MPFR is not set
+CONFIG_STRESS_NG_LIB_SCTP=y
+# CONFIG_STRESS_NG_LIB_XXHASH is not set
+CONFIG_STRESS_NG_LIB_Z=y
+# end of Configuration
+
 # CONFIG_PACKAGE_subconverter is not set
 # CONFIG_PACKAGE_sumo is not set
 # CONFIG_PACKAGE_supervisor is not set
@@ -8363,7 +8385,6 @@ CONFIG_PACKAGE_ubi-utils=y
 # CONFIG_PACKAGE_unetmsg is not set
 # CONFIG_PACKAGE_unix2dos is not set
 # CONFIG_PACKAGE_unshare is not set
-# CONFIG_PACKAGE_upx is not set
 # CONFIG_PACKAGE_usb-modeswitch is not set
 # CONFIG_PACKAGE_usbids is not set
 # CONFIG_PACKAGE_usbutils is not set
