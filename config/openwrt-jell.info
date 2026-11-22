@@ -189,6 +189,8 @@ CONFIG_TARGET_mediatek_filogic=y
 # CONFIG_TARGET_mediatek_filogic_DEVICE_mediatek_mt7986b-rfb is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_mediatek_mt7987a-rfb is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_mediatek_mt7988a-rfb is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_mercusys_h90x-v1 is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_mercusys_h90x-v1-ubi is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_mercusys_mr80x-v3 is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_mercusys_mr85x is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_mercusys_mr85x-ubi is not set
@@ -266,11 +268,14 @@ CONFIG_TARGET_mediatek_filogic_DEVICE_openwrt_one=y
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zbtlink_zbt-z8105ax-c is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zbtlink_zbt-z8106ax-s is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zbtlink_zbt-z8106ax-t is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_zbtlink_zbt-z8114ax-ds is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zbtlink_zbt-z8803be is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_ex5601-t0-stock is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_ex5601-t0-ubootmod is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_ex5700-telenor is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_nwa50ax-pro is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_nwa55ax-ptp is not set
+# CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_wax300h is not set
 # CONFIG_TARGET_mediatek_filogic_DEVICE_zyxel_wx5600-t0-ubootmod is not set
 CONFIG_HAS_SUBTARGETS=y
 CONFIG_HAS_DEVICES=y
@@ -636,7 +641,7 @@ CONFIG_USE_MUSL=y
 CONFIG_SSP_SUPPORT=y
 CONFIG_BINUTILS_VERSION_2_46=y
 CONFIG_BINUTILS_VERSION="2.46.1"
-CONFIG_GCC_VERSION="14.4.0"
+CONFIG_GCC_VERSION="15.3.0"
 CONFIG_GCC_USE_DEFAULT_VERSION=y
 CONFIG_LIBC="musl"
 CONFIG_TARGET_SUFFIX="musl"
@@ -1807,7 +1812,7 @@ CONFIG_PACKAGE_ca-bundle=y
 CONFIG_PACKAGE_dnsmasq=y
 # CONFIG_PACKAGE_dnsmasq-dhcpv6 is not set
 # CONFIG_PACKAGE_dnsmasq-full is not set
-# CONFIG_PACKAGE_dnsmasq_full_nftset is not set
+CONFIG_PACKAGE_dnsmasq_full_nftset=y
 CONFIG_PACKAGE_dropbear=y
 
 #
@@ -2440,8 +2445,20 @@ CONFIG_PACKAGE_wireless-regdb=y
 #
 # Noto
 #
-# CONFIG_PACKAGE_noto-fonts-cjk is not set
+# CONFIG_PACKAGE_noto-fonts-africa-americas is not set
+# CONFIG_PACKAGE_noto-fonts-cjk-sans is not set
+# CONFIG_PACKAGE_noto-fonts-cjk-sans-mono is not set
+# CONFIG_PACKAGE_noto-fonts-cjk-serif is not set
+# CONFIG_PACKAGE_noto-fonts-color-emoji is not set
+# CONFIG_PACKAGE_noto-fonts-core is not set
 # CONFIG_PACKAGE_noto-fonts-emoji is not set
+# CONFIG_PACKAGE_noto-fonts-extra is not set
+# CONFIG_PACKAGE_noto-fonts-historic is not set
+# CONFIG_PACKAGE_noto-fonts-license is not set
+# CONFIG_PACKAGE_noto-fonts-south-asia is not set
+# CONFIG_PACKAGE_noto-fonts-southeast-asia is not set
+# CONFIG_PACKAGE_noto-fonts-symbols is not set
+# CONFIG_PACKAGE_noto-fonts-west-asia is not set
 # end of Noto
 # end of Fonts
 
@@ -2999,6 +3016,7 @@ CONFIG_PACKAGE_kmod-nf-reject=y
 CONFIG_PACKAGE_kmod-nf-reject6=y
 CONFIG_PACKAGE_kmod-nf-socket=y
 CONFIG_PACKAGE_kmod-nf-tproxy=y
+# CONFIG_PACKAGE_kmod-nf-xtables is not set
 CONFIG_PACKAGE_kmod-nfnetlink=y
 # CONFIG_PACKAGE_kmod-nfnetlink-cthelper is not set
 # CONFIG_PACKAGE_kmod-nfnetlink-cttimeout is not set
@@ -3134,7 +3152,6 @@ CONFIG_PACKAGE_kmod-phy-airoha-en8811h=y
 # CONFIG_PACKAGE_kmod-sfc-falcon is not set
 # CONFIG_PACKAGE_kmod-sfc-siena is not set
 # CONFIG_PACKAGE_kmod-sfp is not set
-# CONFIG_PACKAGE_kmod-siit is not set
 # CONFIG_PACKAGE_kmod-sis190 is not set
 # CONFIG_PACKAGE_kmod-sis900 is not set
 # CONFIG_PACKAGE_kmod-skge is not set
@@ -4120,6 +4137,7 @@ CONFIG_PACKAGE_ucode-mod-uloop=y
 #
 # Compression
 #
+# CONFIG_PACKAGE_libbrotli is not set
 # CONFIG_PACKAGE_libbz2 is not set
 # CONFIG_PACKAGE_liblz4 is not set
 # CONFIG_PACKAGE_liblzma is not set
@@ -4814,6 +4832,7 @@ CONFIG_MESA_USE_LLVM=y
 # CONFIG_PACKAGE_antileech is not set
 # CONFIG_PACKAGE_argp-standalone is not set
 # CONFIG_PACKAGE_bind-libs is not set
+# CONFIG_PACKAGE_bind-libs-gssapi is not set
 # CONFIG_PACKAGE_bluez-libs is not set
 # CONFIG_PACKAGE_boost is not set
 # CONFIG_PACKAGE_cJSON is not set
@@ -5145,6 +5164,7 @@ CONFIG_PACKAGE_libnl-tiny=y
 # CONFIG_PACKAGE_libpopt is not set
 # CONFIG_PACKAGE_libpri is not set
 # CONFIG_PACKAGE_libprotobuf-c is not set
+# CONFIG_PACKAGE_libprotoc is not set
 # CONFIG_PACKAGE_libpsl is not set
 # CONFIG_PACKAGE_libpulse is not set
 # CONFIG_PACKAGE_libqmi is not set
@@ -5234,6 +5254,7 @@ CONFIG_PACKAGE_libudebug=y
 CONFIG_PACKAGE_libustream-mbedtls=y
 # CONFIG_PACKAGE_libustream-openssl is not set
 # CONFIG_PACKAGE_libustream-wolfssl is not set
+# CONFIG_PACKAGE_libutf8-range is not set
 # CONFIG_PACKAGE_libutp is not set
 # CONFIG_PACKAGE_libuuid is not set
 # CONFIG_PACKAGE_libuv is not set
@@ -5434,6 +5455,7 @@ CONFIG_LUCI_UTMIN=y
 # CONFIG_PACKAGE_luci-app-adguardhome is not set
 # CONFIG_PACKAGE_luci-app-advanced-reboot is not set
 # CONFIG_PACKAGE_luci-app-advancedplus is not set
+# CONFIG_PACKAGE_luci-app-agent2api is not set
 # CONFIG_PACKAGE_luci-app-agentflow is not set
 # CONFIG_PACKAGE_luci-app-airconnect is not set
 # CONFIG_PACKAGE_luci-app-aliddns is not set
@@ -5470,6 +5492,7 @@ CONFIG_LUCI_UTMIN=y
 # CONFIG_PACKAGE_luci-app-bmx7 is not set
 # CONFIG_PACKAGE_luci-app-bridge is not set
 # CONFIG_PACKAGE_luci-app-broadbandacc is not set
+# CONFIG_PACKAGE_luci-app-caddy is not set
 # CONFIG_PACKAGE_luci-app-campusnet is not set
 # CONFIG_PACKAGE_luci-app-cd8021x is not set
 # CONFIG_PACKAGE_luci-app-cellled is not set
@@ -5875,7 +5898,6 @@ CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go=y
 # CONFIG_PACKAGE_luci-app-uptimekuma is not set
 # CONFIG_PACKAGE_luci-app-usbmodem is not set
 # CONFIG_PACKAGE_luci-app-usteer is not set
-# CONFIG_PACKAGE_luci-app-ustreamer is not set
 # CONFIG_PACKAGE_luci-app-uugamebooster is not set
 # CONFIG_PACKAGE_luci-app-v2ray-server is not set
 # CONFIG_PACKAGE_luci-app-v2raya is not set
@@ -5885,6 +5907,7 @@ CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go=y
 # CONFIG_PACKAGE_luci-app-vless-core is not set
 # CONFIG_PACKAGE_luci-app-vlmcsd is not set
 # CONFIG_PACKAGE_luci-app-vnstat2 is not set
+# CONFIG_PACKAGE_luci-app-vnt is not set
 # CONFIG_PACKAGE_luci-app-vsftpd is not set
 # CONFIG_PACKAGE_luci-app-wan-mac is not set
 # CONFIG_PACKAGE_luci-app-watchcat is not set
@@ -5898,6 +5921,7 @@ CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go=y
 # CONFIG_PACKAGE_luci-app-wifihistory is not set
 # CONFIG_PACKAGE_luci-app-wifischedule is not set
 # CONFIG_PACKAGE_luci-app-wizard is not set
+# CONFIG_PACKAGE_luci-app-wizzard is not set
 # CONFIG_PACKAGE_luci-app-wol is not set
 # CONFIG_PACKAGE_luci-app-wolplus is not set
 # CONFIG_PACKAGE_luci-app-wrtbwmon is not set
@@ -6126,7 +6150,6 @@ CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go=y
 # CONFIG_PACKAGE_motion-noffmpeg is not set
 # CONFIG_PACKAGE_pikpak-webdav is not set
 # CONFIG_PACKAGE_torrserver is not set
-# CONFIG_PACKAGE_ustreamer is not set
 # CONFIG_PACKAGE_v4l2tools is not set
 # CONFIG_PACKAGE_vips is not set
 # CONFIG_PACKAGE_xupnpd is not set
@@ -6140,6 +6163,7 @@ CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go=y
 #
 # BitTorrent
 #
+# CONFIG_PACKAGE_dhtd is not set
 # CONFIG_PACKAGE_mktorrent is not set
 # CONFIG_PACKAGE_opentracker is not set
 # CONFIG_PACKAGE_qBittorrent is not set
@@ -6338,23 +6362,34 @@ CONFIG_PACKAGE_nftables-json=y
 # CONFIG_PACKAGE_avahi-nodbus-daemon is not set
 # CONFIG_PACKAGE_avahi-utils is not set
 # CONFIG_PACKAGE_bind-check is not set
+# CONFIG_PACKAGE_bind-check-gssapi is not set
 # CONFIG_PACKAGE_bind-client is not set
+# CONFIG_PACKAGE_bind-client-gssapi is not set
 # CONFIG_PACKAGE_bind-ddns-confgen is not set
+# CONFIG_PACKAGE_bind-ddns-confgen-gssapi is not set
+# CONFIG_PACKAGE_bind-delv is not set
+# CONFIG_PACKAGE_bind-delv-gssapi is not set
 # CONFIG_PACKAGE_bind-dig is not set
+# CONFIG_PACKAGE_bind-dig-gssapi is not set
 # CONFIG_PACKAGE_bind-dnssec is not set
+# CONFIG_PACKAGE_bind-dnssec-gssapi is not set
 # CONFIG_PACKAGE_bind-host is not set
+# CONFIG_PACKAGE_bind-host-gssapi is not set
 # CONFIG_PACKAGE_bind-nslookup is not set
+# CONFIG_PACKAGE_bind-nslookup-gssapi is not set
 # CONFIG_PACKAGE_bind-rndc is not set
+# CONFIG_PACKAGE_bind-rndc-gssapi is not set
 # CONFIG_PACKAGE_bind-server is not set
-# CONFIG_BIND_JEMALLOC is not set
+# CONFIG_PACKAGE_bind-server-gssapi is not set
 # CONFIG_PACKAGE_bind-tools is not set
+# CONFIG_PACKAGE_bind-tools-gssapi is not set
+# CONFIG_BIND_JEMALLOC is not set
 # CONFIG_PACKAGE_chinadns-ng is not set
 # CONFIG_PACKAGE_coredns is not set
 # CONFIG_PACKAGE_ddns-scripts is not set
 # CONFIG_PACKAGE_ddns-scripts-services is not set
 # CONFIG_PACKAGE_ddns-scripts_aliyun is not set
 # CONFIG_PACKAGE_ddns-scripts_dnspod is not set
-# CONFIG_PACKAGE_dhtd is not set
 # CONFIG_PACKAGE_dns-over-https is not set
 # CONFIG_PACKAGE_dns2socks is not set
 # CONFIG_PACKAGE_dns2socks-rust is not set
@@ -7280,7 +7315,6 @@ CONFIG_PACKAGE_mihomo=y
 # CONFIG_PACKAGE_net-tools-netstat is not set
 # CONFIG_PACKAGE_net-tools-route is not set
 # CONFIG_PACKAGE_netavark is not set
-# CONFIG_PACKAGE_netcat is not set
 # CONFIG_PACKAGE_netdiscover is not set
 # CONFIG_PACKAGE_netifyd is not set
 # CONFIG_PACKAGE_netperf is not set
@@ -7533,12 +7567,16 @@ CONFIG_SNAPCAST_VORBIS=y
 #
 # System
 #
+# CONFIG_PACKAGE_changeguard is not set
 # CONFIG_PACKAGE_dockermanager is not set
 # CONFIG_PACKAGE_ffmpeg-static is not set
 # CONFIG_PACKAGE_kai is not set
 # CONFIG_PACKAGE_kai-agent is not set
 # CONFIG_PACKAGE_kai_session is not set
 # CONFIG_PACKAGE_kaiplus is not set
+# CONFIG_PACKAGE_linkspace is not set
+# CONFIG_PACKAGE_luci-app-optimemachine is not set
+# CONFIG_PACKAGE_optimemachine is not set
 # end of System
 
 #
@@ -7802,7 +7840,6 @@ CONFIG_PACKAGE_uboot-envtools=y
 # Terminal
 #
 # CONFIG_PACKAGE_agetty is not set
-# CONFIG_PACKAGE_dvtm is not set
 # CONFIG_PACKAGE_kitty-terminfo is not set
 # CONFIG_PACKAGE_minicom is not set
 # CONFIG_PACKAGE_picocom is not set
